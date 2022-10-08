@@ -1,24 +1,6 @@
-"use strict";
 // const anchor = document.querySelector('a')!
 // console.log(anchor.href)
-class Invoice {
-    // readonly client: string
-    // private details: string
-    // amount: number
-    // constructor(clientP: string, detailsP: string, amountP: number) {
-    //   this.client = clientP
-    //   this.details = detailsP
-    //   this.amount = amountP
-    // }
-    constructor(client, details, amount) {
-        this.client = client;
-        this.details = details;
-        this.amount = amount;
-    }
-    format() {
-        return `${this.client} owes ${this.amount} pesos for ${this.details}`;
-    }
-}
+import { Invoice } from './models/Invoice.js';
 const invoice1 = new Invoice('Joser', 'Light work', 1000);
 const invoice2 = new Invoice('Mimi', 'Test Work', 5000);
 let invoices = [];
