@@ -1,5 +1,19 @@
-// const anchor = document.querySelector('a')!
-// console.log(anchor.href)
+const me = {
+    name: 'Neil',
+    age: 25,
+    speak(words) {
+        console.log(words);
+    },
+    spend(amount) {
+        console.log('I spent', amount);
+        return amount;
+    }
+};
+const greetPerson = (person) => {
+    console.log('hello', person.name);
+};
+greetPerson(me);
+console.log(me);
 import { Invoice } from './models/Invoice.js';
 const invoice1 = new Invoice('Joser', 'Light work', 1000);
 const invoice2 = new Invoice('Mimi', 'Test Work', 5000);

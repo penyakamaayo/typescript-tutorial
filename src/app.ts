@@ -1,6 +1,31 @@
-// const anchor = document.querySelector('a')!
+// interfaces
+interface IsPerson {
+  name: string,
+  age: number,
+  speak(words: string): void,
+  spend(money: number): number,
+}
 
-// console.log(anchor.href)
+const me: IsPerson = {
+  name: 'Neil',
+  age: 25,
+  speak(words: string): void {
+    console.log(words)
+  },
+  spend(amount: number) {
+    console.log('I spent', amount)
+    return amount
+  }
+}
+
+const greetPerson = (person: IsPerson) => {
+  console.log('hello', person.name)
+}
+
+greetPerson(me)
+
+console.log(me)
+
 import { Invoice } from './models/Invoice.js'
 
 const invoice1 = new Invoice('Joser', 'Light work', 1000)
@@ -28,11 +53,10 @@ const amount = document.querySelector('#amount') as HTMLInputElement
 
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault()
-
   console.log(
     type.value,
     toFrom.value,
     details.value,
     amount.valueAsNumber
-    )
-  })
+  )
+})
