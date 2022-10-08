@@ -15,14 +15,23 @@ const greetPerson = (person) => {
 greetPerson(me);
 console.log(me);
 import { Invoice } from './models/Invoice.js';
-const invoice1 = new Invoice('Joser', 'Light work', 1000);
-const invoice2 = new Invoice('Mimi', 'Test Work', 5000);
-let invoices = [];
-invoices.push(invoice1);
-invoices.push(invoice2);
-invoices.forEach(invoice => {
-    console.log(invoice.client, invoice.amount, invoice.format());
-});
+import { Payment } from './models/Payment.js';
+let doc1;
+let doc2;
+doc1 = new Invoice('Seth', 'web work', 500);
+doc2 = new Payment('Josh', 'wood work', 1000);
+let docs = [];
+docs.push(doc1);
+docs.push(doc2);
+console.log(docs);
+// const invoice1 = new Invoice('Joser', 'Light work', 1000)
+// const invoice2 = new Invoice('Mimi', 'Test Work', 5000)
+// let invoices: Invoice[] = []
+// invoices.push(invoice1)
+// invoices.push(invoice2)
+// invoices.forEach(invoice => {
+//   console.log(invoice.client, invoice.amount, invoice.format())
+// })
 const form = document.querySelector('.new-item-form');
 // console.log(form.children)
 // inputs
@@ -34,5 +43,12 @@ const amount = document.querySelector('#amount');
 // console.log(invoice1)
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(type.value, toFrom.value, details.value, amount.valueAsNumber);
+    let doc;
+    if (type.value == 'invoice') {
+        doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(toFrom.value, details.value, amount.valueAsNumber);
+    }
+    console.log(doc);
 });

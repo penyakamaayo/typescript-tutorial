@@ -27,17 +27,31 @@ greetPerson(me)
 console.log(me)
 
 import { Invoice } from './models/Invoice.js'
+import { Payment } from './models/Payment.js'
+import { HasFormatter } from './interfaces/HasFormatter.js'
 
-const invoice1 = new Invoice('Joser', 'Light work', 1000)
-const invoice2 = new Invoice('Mimi', 'Test Work', 5000)
+let doc1: HasFormatter
+let doc2: HasFormatter
 
-let invoices: Invoice[] = []
-invoices.push(invoice1)
-invoices.push(invoice2)
+doc1 = new Invoice('Seth', 'web work', 500)
+doc2 = new Payment('Josh', 'wood work', 1000)
 
-invoices.forEach(invoice => {
-  console.log(invoice.client, invoice.amount, invoice.format())
-})
+let docs: HasFormatter[] = []
+docs.push(doc1)
+docs.push(doc2)
+
+console.log(docs)
+
+// const invoice1 = new Invoice('Joser', 'Light work', 1000)
+// const invoice2 = new Invoice('Mimi', 'Test Work', 5000)
+
+// let invoices: Invoice[] = []
+// invoices.push(invoice1)
+// invoices.push(invoice2)
+
+// invoices.forEach(invoice => {
+//   console.log(invoice.client, invoice.amount, invoice.format())
+// })
 
 const form = document.querySelector('.new-item-form') as HTMLFormElement
 // console.log(form.children)
@@ -53,10 +67,17 @@ const amount = document.querySelector('#amount') as HTMLInputElement
 
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault()
+
+  let doc: HasFormatter
+
+  if(type.value == 'invoice') {
+    doc = new Invoice(toFrom.value, details.value, amount.valueAsNumber)
+  }
+  else {
+    doc = new Payment(toFrom.value, details.value, amount.valueAsNumber)
+  }
+
   console.log(
-    type.value,
-    toFrom.value,
-    details.value,
-    amount.valueAsNumber
+    doc
   )
 })
